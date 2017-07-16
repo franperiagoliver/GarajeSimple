@@ -1,0 +1,12 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.domain;
+
+public class Coche extends Vehiculo implements Aparcable {
+	
+	private String marca;
+	private String color;
+	
+	
+	
+	
+	
+}

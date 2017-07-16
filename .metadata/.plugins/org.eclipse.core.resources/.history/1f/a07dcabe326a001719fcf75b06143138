@@ -1,0 +1,10 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.manager;
+
+public class GarajeRunner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

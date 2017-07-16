@@ -1,0 +1,70 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.manager;
+
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Cliente;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Coche;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Garaje;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Plaza;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Vehiculo;
+
+public class GarajeRunner {
+
+	public static void main(String[] args) {
+		
+		// 4 coches:
+		
+		Coche coche1 = new Coche("9541JLF", "Seat", "Blanco");
+		Coche coche2 = new Coche("2329HGF", "Renault", "Negro");
+		Coche coche3 = new Coche("4578NMB", "Fiat", "Rojo");
+		Coche coche4 = new Coche("3258FGD", "Citröen", "Verde");
+		
+		// 5 clientes:
+		
+		Cliente cliente1 = new Cliente("23299056X", "Juan Fernández", coche1);
+		Cliente cliente2 = new Cliente("12252654T", "Fran Periago", coche2);
+		Cliente cliente3 = new Cliente("59988563K", "Adrián Sánchez", coche3);
+		Cliente cliente4 = new Cliente("89652435L", "María González", coche4);
+		Cliente cliente5 = new Cliente("10203040A", "Ana López", coche4);
+		
+		// 30 plazas:
+		
+		
+		Plaza plaza1 = new Plaza(cliente1, 100.20);
+		Plaza plaza2 = new Plaza(cliente2, 80);
+		Plaza plaza3 = new Plaza(cliente3, 50);
+		Plaza plaza4 = new Plaza(cliente4, 60);
+		Plaza plaza5 = new Plaza(cliente5, 75.50);
+		Plaza plaza6 = new Plaza();
+		Plaza plaza7 = new Plaza();
+		Plaza plaza8 = new Plaza();
+		Plaza plaza9 = new Plaza();
+		Plaza plaza10 = new Plaza();
+		Plaza plaza11 = new Plaza();
+		Plaza plaza12 = new Plaza();
+		Plaza plaza13 = new Plaza();
+		Plaza plaza14 = new Plaza();
+		Plaza plaza15 = new Plaza();
+		Plaza plaza16 = new Plaza();
+		Plaza plaza17 = new Plaza();
+		Plaza plaza18 = new Plaza();
+		Plaza plaza19 = new Plaza();
+		Plaza plaza20 = new Plaza();
+		Plaza plaza21 = new Plaza();
+		Plaza plaza22 = new Plaza();
+		Plaza plaza23 = new Plaza();
+		Plaza plaza24 = new Plaza();
+		Plaza plaza25 = new Plaza();
+		Plaza plaza26 = new Plaza();
+		Plaza plaza27 = new Plaza();
+		Plaza plaza28 = new Plaza();
+		Plaza plaza29 = new Plaza();
+		Plaza plaza30 = new Plaza();
+		
+		
+		// 1 garage.	
+			
+		}
+	
+		
+	}
+
+}

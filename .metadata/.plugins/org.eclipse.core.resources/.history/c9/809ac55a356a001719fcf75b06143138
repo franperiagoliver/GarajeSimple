@@ -1,0 +1,16 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.manager;
+
+public class GarajeRunner {
+
+	public static void main(String[] args) {
+		
+		// 5 clientes
+		
+		// 4 coches
+		
+		// 30 plazas
+		
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.domain;
+
+public class Garaje {
+
+	private Plaza plaza;
+
+	public Garaje(Plaza plaza) {
+		this.plaza = plaza;
+
+	}
+
+	public Plaza getPlaza() {
+		return plaza;
+	}
+
+	public void setPlaza(Plaza plaza) {
+		this.plaza = plaza;
+	}
+
+}

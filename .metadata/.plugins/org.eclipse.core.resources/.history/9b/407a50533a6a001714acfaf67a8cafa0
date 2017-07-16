@@ -1,0 +1,36 @@
+package com.everis.alicante.courses.beca.java_.simple.garage.manager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Cliente;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Garaje;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Plaza;
+import com.everis.alicante.courses.beca.java_.simple.garage.domain.Vehiculo;
+
+public class GarajeRunner {
+
+	public static void main(String[] args) {
+		
+		// 5 clientes, 4 coches, 30 plazas y 1 garage.
+		
+		inicializarComponentes();
+		
+		public static void inicializarComponentes() {
+			
+			List<Cliente> clientes = new ArrayList();
+			List<Vehiculo> vehiculos = new ArrayList();
+			List<Plaza> plazas = new ArrayList();
+			Garaje garaje1 = new Garaje();
+			
+			// Clientes:
+	
+			
+			
+			
+		}
+	
+		
+	}
+
+}
