@@ -5,9 +5,8 @@ public class ControladorGarajeConColecciones implements ControladorGaraje {
 		
 	}
 
-	public Plaza[] listarPlazasOcupadas() {
+	public void listarPlazasOcupadas() {
 		
-		return null;
 	}
 
 	@Override
