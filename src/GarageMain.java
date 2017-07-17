@@ -64,7 +64,7 @@ public class GarageMain {
 		if (opcion == 3 && resultado) {
 			System.out.println("Se ha reservado tu plaza");
 		}
-		else {
+		else if (opcion == 3){
 			System.out.println("No hay plazas disponibles");
 		}
 		
