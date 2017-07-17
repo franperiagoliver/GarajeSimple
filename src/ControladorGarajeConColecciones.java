@@ -1,13 +1,19 @@
 
 public class ControladorGarajeConColecciones implements ControladorGaraje {
 
-	public Plaza[] listarPlazasLibres() {
+	public void listarPlazasLibres() {
 		
-		return null;
 	}
 
 	public Plaza[] listarPlazasOcupadas() {
 		
 		return null;
 	}
+
+	@Override
+	public boolean reservarPlaza() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

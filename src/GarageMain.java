@@ -4,6 +4,10 @@ public class GarageMain {
 	
 	static Garaje garaje;
 	
+	public static Garaje getGaraje() {
+		return garaje;
+	}
+
 	static ControladorGaraje controlador;
 	
 	public static void main(String[] args) {
@@ -31,10 +35,11 @@ public class GarageMain {
 		System.out.println("Bienvenido a nuestro garaje, seleccione una opción: \n");
 		System.out.println("1: Listar Plazas Garaje libres");
 		System.out.println("2: Listar Plazas Garaje ocupadas");
-		System.out.println("3: Calcular ingresos mensuales");
+		System.out.println("3: Reservar plaza");
 		
 		Scanner in = new Scanner(System.in);
 		Integer opcion = in.nextInt();
+		Boolean resultado = true;
 		
 		System.out.println("Ha elegido la opción: " + opcion);
 		
@@ -48,14 +53,22 @@ public class GarageMain {
 			
 			controlador.listarPlazasOcupadas();
 			break;
+		
+		case 3:
+			resultado=controlador.reservarPlaza();
 			
 		default:
-			
-			System.out.println("Error");
 			break;
 		}
 		
-		in.close();
+		if (opcion == 3 && resultado) {
+			System.out.println("Se ha reservado tu plaza");
+		}
+		else {
+			System.out.println("No hay plazas disponibles");
+		}
+		
+		iniciarAplicacion();
 		
 	}
 
@@ -89,6 +102,7 @@ public class GarageMain {
 		}
 		
 		garaje.setPlaza(plazas);
+		
 		
 		controlador = new ControladorGarajeConArrays();
 		

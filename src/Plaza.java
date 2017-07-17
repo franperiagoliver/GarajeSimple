@@ -23,5 +23,21 @@ public class Plaza {
 	public void setNumeroPlaza(int numeroPlaza) {
 		this.numeroPlaza = numeroPlaza;
 	}
+	public boolean getLibre() {
+		if (cliente == null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Plaza [cliente=" + cliente + ", precio=" + precio + ", numeroPlaza=" + numeroPlaza + "]";
+	}
+	
+	
 	
 }
