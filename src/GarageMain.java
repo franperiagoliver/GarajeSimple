@@ -1,80 +1,99 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-
+import java.util.Scanner;
 
 public class GarageMain {
-
+	
+	static Garaje garaje;
+	
+	static ControladorGaraje controlador;
+	
 	public static void main(String[] args) {
 		
-		//4 clientes
+		// Inicializar los componentes de la aplicación.
 		
-		//5 vehiculos
+		// 4 clientes.
 		
-		//30 plazas de garaje
+		// 5 vehiculos.
 		
-		//1 garaje
+		// 30 plazas de garaje.
+		
+		// 1 garaje.
 		
 		inicializarComponentes();
+		
+		// Iniciar aplicación (Listar menú por pantalla).
+		
+		iniciarAplicacion();
 
 	}
 	
-	public static void inicializarComponentes() {
+	private static void iniciarAplicacion() {
 		
-		List<Vehiculo> vehiculos = new ArrayList<>();
-		List<Cliente> clientes = new ArrayList<>();
-		List<Plaza> plazas = new ArrayList<>();
-		Garaje garaje = new Garaje();
+		System.out.println("Bienvenido a nuestro garaje, seleccione una opción: \n");
+		System.out.println("1: Listar Plazas Garaje libres");
+		System.out.println("2: Listar Plazas Garaje ocupadas");
+		System.out.println("3: Calcular ingresos mensuales");
 		
-		//INICIALIZAR VEHICULOS
-		for (int i = 0; i < 5; i++) {
-			Random rn = new Random();
-			int range = 9999 - 1000 + 1;
-			int randomNum =  rn.nextInt(range) + 100;
+		Scanner in = new Scanner(System.in);
+		Integer opcion = in.nextInt();
+		
+		System.out.println("Ha elegido la opción: " + opcion);
+		
+		switch (opcion) {
+		case 1:
 			
-			String matricula = String.valueOf(randomNum).concat("ALC");
-			Vehiculo vehiculo = new Vehiculo();
-			vehiculo.setMatricula(matricula);
-			vehiculos.add(vehiculo);
-		}
-		
-		//INICIALIZAR CLIENTES
-		for (int i = 0; i < 4; i++) {
-			Cliente cliente = new Cliente();
-			Random rn = new Random();
-			int range = 9999999 - 1000000 + 1;
-			int randomNum =  rn.nextInt(range) + 100;
+			controlador.listarPlazasLibres();
+			break;
 			
-			String nif = String.valueOf(randomNum).concat("L");
-			cliente.setNif(nif);
-			String nombre = "Remedios Lopez";
-			cliente.setNombreCompleto(nombre);
-			cliente.setVehiculo(vehiculos.get(i));
-			clientes.add(cliente);
+		case 2:
+			
+			controlador.listarPlazasOcupadas();
+			break;
+			
+		default:
+			
+			System.out.println("Error");
+			break;
 		}
 		
-		//INICIALIZAR PLAZAS
-		for (int i = 0; i < 30; i++) {
-			Plaza plaza = new Plaza();
-			plaza.setPrecio(125.00);
-			plazas.add(plaza);
-		}
+		in.close();
 		
-		for (int j = 0; j < clientes.size(); j++) {
-			Plaza plaza = plazas.get(j);
-			plaza.setCliente(clientes.get(j));
-		}
-		
-		//INICIALIZAR GARAJE
-		for (int i = 0; i < 1; i++) {
-			garaje.setPlazas(plazas);
-		}
-		System.out.println(garaje);
-		
-//		System.out.println(vehiculos);
-//		System.out.println(clientes);
-//		System.out.println(plazas);
 	}
 
+	public static void inicializarComponentes() {
+		
+		garaje = new Garaje();
+		
+		Plaza [] plazas = new Plaza[30];
+		
+		for (int i = 0; i < plazas.length; i++) {
+			
+			Plaza plazaTemp = new Plaza();
+			plazaTemp.setNumeroPlaza(i+1);
+			
+			if (i < 10) {
+				
+				plazaTemp.setPrecio(50);
+				
+			} else if (i < 20) {
+				
+				plazaTemp.setPrecio(75);
+				
+			} else {
+				
+				plazaTemp.setPrecio(100);
+				
+			}
+			
+			plazas[i] = plazaTemp;
+			
+		}
+		
+		garaje.setPlaza(plazas);
+		
+		controlador = new ControladorGarajeConArrays();
+		
+	}
+	
+	
 }
+
