@@ -20,10 +20,9 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 		List<Plaza> plazasLibres = new ArrayList<Plaza>();
 
-		Plaza[] plazas = GarageMain.getGaraje().getPlaza();
+		List<Plaza> plazas = GarageMain.getGaraje().getPlaza();
 
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plaza = plazas[i];
+		for (Plaza plaza : plazas) {
 
 			if (plaza.getLibre()) {
 				plazasLibres.add(plaza);
@@ -39,10 +38,9 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 		List<Plaza> plazasOcupadas = new ArrayList<Plaza>();
 
-		Plaza[] plazas = GarageMain.getGaraje().getPlaza();
+		List<Plaza> plazas = GarageMain.getGaraje().getPlaza();
 
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plaza = plazas[i];
+		for (Plaza plaza : plazas) {
 
 			if (!plaza.getLibre()) {
 				plazasOcupadas.add(plaza);
@@ -105,18 +103,15 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 		boolean hayPlaza = false;
 		Garaje garaje = GarageMain.getGaraje();
-		Plaza[] plazas = garaje.getPlaza();
+		List<Plaza> plazas = garaje.getPlaza();
 
-		for (int i = 0; i < plazas.length; i++) {
-
-			Plaza plaza = plazas[i];
+		for (Plaza plaza : plazas) {
 
 			if (plaza.getLibre() && vehiculoCliente instanceof Aparcable) {
 
 				plaza.setCliente(cliente);
 				hayPlaza = true;
 				return hayPlaza;
-
 			}
 		}
 
