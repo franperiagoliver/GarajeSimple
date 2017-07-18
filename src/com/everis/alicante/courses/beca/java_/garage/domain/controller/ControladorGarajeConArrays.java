@@ -1,5 +1,7 @@
 package com.everis.alicante.courses.beca.java_.garage.domain.controller;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,9 +12,12 @@ import com.everis.alicante.courses.beca.java_.garage.domain.Coche;
 import com.everis.alicante.courses.beca.java_.garage.domain.Garaje;
 import com.everis.alicante.courses.beca.java_.garage.domain.Moto;
 import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
+import com.everis.alicante.courses.beca.java_.garage.domain.Reserva;
+import com.everis.alicante.courses.beca.java_.garage.domain.ReservaDAOFileImp;
 import com.everis.alicante.courses.beca.java_.garage.domain.Vehiculo;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.Aparcable;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.ControladorGaraje;
+import com.everis.alicante.courses.beca.java_.garage.interfaces.ReservaDAO;
 
 public class ControladorGarajeConArrays implements ControladorGaraje {
 
@@ -53,8 +58,9 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 	}
 
 	@Override
-	public boolean reservarPlaza() {
-
+	public boolean reservarPlaza() throws IOException {
+		
+		ReservaDAO dao = new ReservaDAOFileImp();
 		Cliente cliente = new Cliente();
 		Vehiculo vehiculoCliente = new Coche();
 
@@ -111,6 +117,13 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 
 				plaza.setCliente(cliente);
 				hayPlaza = true;
+				
+				Reserva reserva = new Reserva();
+				reserva.setCliente(cliente);
+				reserva.setNumeroPlaza(plaza);
+				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				dao.saveReserva(reserva);
+				
 				return hayPlaza;
 			}
 		}

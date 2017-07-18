@@ -40,7 +40,7 @@ public class GarageMain {
 
 	}
 	
-	private static void iniciarAplicacion() {
+	private static void iniciarAplicacion() throws IOException {
 		
 		System.out.println("Bienvenido a nuestro garaje, seleccione una opción: \n");
 		System.out.println("1: Listar Plazas Garaje libres");
