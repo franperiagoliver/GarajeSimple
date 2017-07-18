@@ -1,4 +1,10 @@
+package com.everis.alicante.courses.beca.java_.garage;
 import java.util.Scanner;
+
+import com.everis.alicante.courses.beca.java_.garage.domain.Garaje;
+import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
+import com.everis.alicante.courses.beca.java_.garage.domain.controller.ControladorGarajeConArrays;
+import com.everis.alicante.courses.beca.java_.garage.interfaces.ControladorGaraje;
 
 public class GarageMain {
 	
