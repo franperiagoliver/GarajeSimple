@@ -122,6 +122,7 @@ public class ControladorGarajeConArrays implements ControladorGaraje {
 				reserva.setCliente(cliente);
 				reserva.setNumeroPlaza(plaza);
 				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				reserva.setCodigoReserva("AUN NO PODEMOS");
 				dao.saveReserva(reserva);
 				
 				return hayPlaza;

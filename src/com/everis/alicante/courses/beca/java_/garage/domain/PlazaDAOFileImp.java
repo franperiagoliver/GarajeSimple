@@ -15,7 +15,7 @@ public class PlazaDAOFileImp implements PlazaDAO {
 	public List<Plaza> readPlaza() throws IOException {
 		// TODO Auto-generated method stub
 		
-		List plazas = new ArrayList<Plaza>();
+		List<Plaza> plazas = new ArrayList<Plaza>();
 		
 		File file = new File("src/resources/Plazas.txt");
 		FileReader reader = new FileReader(file);
@@ -56,9 +56,11 @@ public class PlazaDAOFileImp implements PlazaDAO {
 	}
 
 	@Override
-	public void write(Plaza[] plazas) {
+	public void write(List<Plaza> plazas) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+	
 
 }
