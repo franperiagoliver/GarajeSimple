@@ -9,6 +9,6 @@ public interface PlazaDAO {
 	
 	List<Plaza> readPlaza() throws IOException;
 	
-	void write(List<Plaza> plazas);
+	void createPlaza(List<Plaza> plazas);
 	
 }

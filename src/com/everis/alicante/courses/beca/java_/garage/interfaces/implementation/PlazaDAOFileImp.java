@@ -1,4 +1,4 @@
-package com.everis.alicante.courses.beca.java_.garage.domain;
+package com.everis.alicante.courses.beca.java_.garage.interfaces.implementation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
 
 public class PlazaDAOFileImp implements PlazaDAO {
@@ -56,7 +57,7 @@ public class PlazaDAOFileImp implements PlazaDAO {
 	}
 
 	@Override
-	public void write(List<Plaza> plazas) {
+	public void createPlaza(List<Plaza> plazas) {
 		// TODO Auto-generated method stub
 		
 	}
