@@ -1,8 +1,11 @@
-package com.everis.alicante.courses.beca.java_.garage.domain.controller;
+package com.everis.alicante.courses.beca.java_.garage.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,6 +26,7 @@ import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.C
 import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.PlazaDAOFileImp;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.ReservaDAOFileImp;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.VehiculoDAOFileImpl;
+import com.everis.alicante.courses.beca.java_.garage.utils.ValidadorNIF;
 
 public class ControladorGarajeImpl implements ControladorGaraje {
 
@@ -82,9 +86,23 @@ public class ControladorGarajeImpl implements ControladorGaraje {
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		cliente.setNombreCompleto(in.nextLine());
-
-		System.out.println("Insert el nif del cliente");
-		in = new Scanner(System.in);
+		
+		boolean nifCorrecto = false;
+		String nif="";
+		
+		while(!nifCorrecto) {
+			
+			System.out.println("Inserte el nif del cliente");
+			in = new Scanner(System.in);
+			nif=in.nextLine();
+			nifCorrecto=ValidadorNIF.validarNIF(nif);
+			
+			if (nifCorrecto == false) {
+				
+				System.out.println("NIF INCORRECTO");
+			}
+		}
+		
 		cliente.setNif(in.nextLine());
 
 		Vehiculo vehiculo = null;
@@ -200,6 +218,25 @@ public class ControladorGarajeImpl implements ControladorGaraje {
 
 		}
 
+	}
+
+	@Override
+	public void listarReservasByFecha(Date fechaInicio, Date fechaFin) throws IOException {
+		// TODO Auto-generated method stub
+		
+		ReservaDAO reservaDAO = new ReservaDAOFileImp();
+		
+		Map<String, Reserva> reservas = reservaDAO.readReservas();
+		
+		for (Reserva reserva : reservas.values()) {
+			
+			if (reserva.getFechaReserva().before(fechaFin) && reserva.getFechaReserva().after(fechaInicio)){
+				
+				System.out.println("Reserva: " + reserva);
+			}
+			
+		}
+		
 	}
 
 }

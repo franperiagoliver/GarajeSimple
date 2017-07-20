@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -64,6 +65,12 @@ public class ReservaDAOFileImp implements ReservaDAO {
 				reserva.setCliente(daocliente.readCliente(temp[2]));
 								
 				reserva.getCliente().setVehiculo(daoVehiculo.readVehiculo(temp[3]));
+				
+				String fecha = temp[4];
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+				
+				reserva.setFechaReserva(temp[4]);;
 				
 				reservas.put(reserva.getCodigoReserva(),reserva);	
 			
