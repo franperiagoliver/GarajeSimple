@@ -10,6 +10,7 @@ public interface ControladorGaraje {
 	void listarPlazasLibres();
 	void listarPlazasOcupadas();
 	boolean reservarPlaza() throws IOException;
-	void listarClientes();
+	void listarClientes() throws IOException;
 	void listarReservas() throws IOException;
+	void listarVehiculos() throws IOException;
 }

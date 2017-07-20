@@ -1,9 +1,11 @@
 package com.everis.alicante.courses.beca.java_.garage.interfaces.implementation;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +51,19 @@ public class VehiculoDAOFileImp implements VehiculoDAO {
 	}
 
 	@Override
-	public void createVehiculo() {
+	public void createVehiculo(Vehiculo vehiculo) throws IOException {
 		// TODO Auto-generated method stub
 		
+		File file = new File("src/resources/Vehiculos.txt");
+		FileWriter writer = new FileWriter(file, true);
+		BufferedWriter buffer = new BufferedWriter(writer);
+
+		buffer.newLine();
+
+		buffer.write(vehiculo.convierteAFormatoTxt());
+
+		buffer.close();
+
 	}
 
 }

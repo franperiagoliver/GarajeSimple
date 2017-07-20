@@ -18,9 +18,9 @@ public class GarageMain {
 	
 	static Garaje garaje;
 	
-	public static Garaje getGaraje() {
-		return garaje;
-	}
+//	public static Garaje getGaraje() {
+//		return garaje;
+//	}
 
 	static ControladorGaraje controlador;
 	
@@ -54,6 +54,7 @@ public class GarageMain {
 		System.out.println("3: Reservar plazas");
 		System.out.println("4: Listar clientes");
 		System.out.println("5: Listar reservas");
+		System.out.println("6: Listar vehículos");
 		
 		Scanner in = new Scanner(System.in);
 		Integer opcion = in.nextInt();
@@ -84,6 +85,10 @@ public class GarageMain {
 			controlador.listarReservas();
 			break;
 			
+		case 6:
+			controlador.listarVehiculos();
+			break;
+			
 		default:
 			break;
 		}
@@ -103,18 +108,18 @@ public class GarageMain {
 		
 		garaje = new Garaje();
 		
-		PlazaDAO plazaDAO = new PlazaDAOFileImp();
-		ReservaDAO reservaDAO = new ReservaDAOFileImp();
-		ClienteDAO clienteDAO = new ClienteDAOFileImp();
-		VehiculoDAO vehiculoDAO = new VehiculoDAOFileImp();
-		
-		garaje.setPlaza(plazaDAO.readPlaza());
-		
-		garaje.setClientes(clienteDAO.readCliente());
-		
-		garaje.setVehiculos(vehiculoDAO.readVehiculo());
-		
-		garaje.setReservas(reservaDAO.readReserva());
+//		PlazaDAO plazaDAO = new PlazaDAOFileImp();
+//		ReservaDAO reservaDAO = new ReservaDAOFileImp();
+//		ClienteDAO clienteDAO = new ClienteDAOFileImp();
+//		VehiculoDAO vehiculoDAO = new VehiculoDAOFileImp();
+//		
+//		garaje.setPlaza(plazaDAO.readPlaza());
+//		
+//		garaje.setClientes(clienteDAO.readCliente());
+//		
+//		garaje.setVehiculos(vehiculoDAO.readVehiculo());
+//		
+//		garaje.setReservas(reservaDAO.readReserva());
 		
 		controlador = new ControladorGarajeImpl();
 		

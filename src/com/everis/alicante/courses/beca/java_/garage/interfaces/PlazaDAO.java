@@ -7,8 +7,14 @@ import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 
 public interface PlazaDAO {
 	
-	List<Plaza> readPlaza() throws IOException;
+	List<Plaza> readPlazas() throws IOException;
 	
-	void createPlaza(List<Plaza> plazas);
+	void createPlazas(List<Plaza> plazas);
+	
+	Plaza readPlaza(int numeroPlaza) throws NumberFormatException, IOException;
+	
+	void deletePlaza(int numeroPlaza);
+	
+	// Falta el update.
 	
 }

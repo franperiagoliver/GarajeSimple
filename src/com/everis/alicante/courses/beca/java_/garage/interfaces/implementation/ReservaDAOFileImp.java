@@ -15,6 +15,7 @@ import com.everis.alicante.courses.beca.java_.garage.domain.Cliente;
 import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 import com.everis.alicante.courses.beca.java_.garage.domain.Reserva;
 import com.everis.alicante.courses.beca.java_.garage.domain.Vehiculo;
+import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.ReservaDAO;
 
 public class ReservaDAOFileImp implements ReservaDAO {
@@ -62,7 +63,9 @@ public class ReservaDAOFileImp implements ReservaDAO {
 	public Map<String, Reserva> readReserva() throws IOException {
 
 		Map<String, Reserva> reservas = new TreeMap<String, Reserva>();
-
+		
+		PlazaDAO daoPlaza = new PlazaDAOFileImp();
+		
 		File file = new File("src/resources/Reservas.txt");
 		FileReader reader = new FileReader(file);
 		BufferedReader buffer = new BufferedReader(reader);
@@ -79,9 +82,7 @@ public class ReservaDAOFileImp implements ReservaDAO {
 
 				reserva.setCodigoReserva(temp[0]);
 
-				Plaza plaza = GarageMain.getGaraje().getPlaza().get(Integer.parseInt(temp[1]));
-
-				reserva.setNumeroPlaza(plaza);
+				reserva.setNumeroPlaza(daoPlaza.readPlaza(Integer.parseInt(temp[1])));
 				
 				reserva.setCliente(GarageMain.getGaraje().getClientes().get(temp[2]));
 				

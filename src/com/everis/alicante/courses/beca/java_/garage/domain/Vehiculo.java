@@ -1,7 +1,7 @@
 package com.everis.alicante.courses.beca.java_.garage.domain;
 
 public class Vehiculo {
-	
+
 	private String matricula;
 	private String tipoVehiculo;
 
@@ -13,7 +13,6 @@ public class Vehiculo {
 		this.matricula = matricula;
 	}
 
-	
 	public String getTipoVehiculo() {
 		return tipoVehiculo;
 	}
@@ -24,9 +23,17 @@ public class Vehiculo {
 
 	@Override
 	public String toString() {
-		return "Vehículo con número de matrícula = " + matricula ;
+		return "Vehículo con número de matrícula = " + matricula;
 	}
-	
-	
-	
+
+	public String convierteAFormatoTxt() {
+
+		String str = "";
+		str = str.concat(String.valueOf(this.matricula));
+		str = str.concat(";");
+		str = str.concat(String.valueOf(this.tipoVehiculo));
+
+		return str;
+	}
+
 }

@@ -10,6 +10,6 @@ public interface ClienteDAO {
 	
 	Map<String, Cliente> readCliente() throws IOException;
 	
-	void createCliente(Cliente cliente);
+	void createCliente(Cliente cliente) throws IOException;
 	
 }

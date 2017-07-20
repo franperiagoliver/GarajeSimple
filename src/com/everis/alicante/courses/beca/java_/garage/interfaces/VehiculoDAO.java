@@ -6,9 +6,9 @@ import java.util.Map;
 import com.everis.alicante.courses.beca.java_.garage.domain.Vehiculo;
 
 public interface VehiculoDAO {
-	
+
 	Map<String, Vehiculo> readVehiculo() throws IOException;
-	
-	void createVehiculo();
-	
+
+	void createVehiculo(Vehiculo vehiculo) throws IOException;
+
 }

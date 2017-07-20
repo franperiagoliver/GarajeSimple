@@ -13,38 +13,38 @@ import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
 public class PlazaDAOFileImp implements PlazaDAO {
 
 	@Override
-	public List<Plaza> readPlaza() throws IOException {
+	public List<Plaza> readPlazas() throws IOException {
 		// TODO Auto-generated method stub
-		
+
 		List<Plaza> plazas = new ArrayList<Plaza>();
-		
+
 		File file = new File("src/resources/Plazas.txt");
 		FileReader reader = new FileReader(file);
 		BufferedReader buffer = new BufferedReader(reader);
-		
+
 		String linea;
-		
-		while((linea=buffer.readLine()) != null) {
-			
+
+		while ((linea = buffer.readLine()) != null) {
+
 			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
-				
-			Plaza plazaTemp = new Plaza();
-			String numeroPlaza = linea.substring(0, linea.indexOf(";"));
-			
-			plazaTemp.setNumeroPlaza(Integer.parseInt(numeroPlaza));
-			
-			String[] temp = linea.split(";");
-			
-			plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
-			plazaTemp.setPrecio(Double.parseDouble(temp[1]));
-			
-			plazas.add(plazaTemp);
-			
+
+				Plaza plazaTemp = new Plaza();
+				String numeroPlaza = linea.substring(0, linea.indexOf(";"));
+
+				plazaTemp.setNumeroPlaza(Integer.parseInt(numeroPlaza));
+
+				String[] temp = linea.split(";");
+
+				plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
+				plazaTemp.setPrecio(Double.parseDouble(temp[1]));
+
+				plazas.add(plazaTemp);
+
 			}
 		}
-		
+
 		reader.close();
-		
+
 		return plazas;
 	}
 
@@ -52,16 +52,56 @@ public class PlazaDAOFileImp implements PlazaDAO {
 
 		PlazaDAO dao = new PlazaDAOFileImp();
 
-		dao.readPlaza();
+		dao.readPlazas();
 
 	}
 
 	@Override
-	public void createPlaza(List<Plaza> plazas) {
+	public void createPlazas(List<Plaza> plazas) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
+	@Override
+	public Plaza readPlaza(int numeroPlaza) throws NumberFormatException, IOException {
+
+		File file = new File("src/resources/Plazas.txt");
+		FileReader reader = new FileReader(file);
+		BufferedReader buffer = new BufferedReader(reader);
+
+		String linea;
+		
+		Plaza plazaTemp = null;
+
+		while ((linea = buffer.readLine()) != null) {
+
+			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
+
+				String[] temp = linea.split(";");
+
+				plazaTemp.setNumeroPlaza(Integer.valueOf(numeroPlaza));
+
+				if (numeroPlaza == Integer.valueOf(temp[0])) {
+					
+					plazaTemp = new Plaza();
+					plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
+					plazaTemp.setPrecio(Double.parseDouble(temp[1]));
+				
+				}
+				
+			}
+		}
+
+		reader.close();
+
+		return plazaTemp;
+
+	}
+
+	@Override
+	public void deletePlaza(int numeroPlaza) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
