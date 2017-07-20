@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Reserva {
 
-	private final String GUION = "-";
 	private String codigoReserva;
 	private Plaza numeroPlaza;
 	private Cliente cliente;
