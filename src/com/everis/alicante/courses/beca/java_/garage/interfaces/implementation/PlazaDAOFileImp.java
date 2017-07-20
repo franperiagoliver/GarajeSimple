@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
@@ -13,34 +13,32 @@ import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
 public class PlazaDAOFileImp implements PlazaDAO {
 
 	@Override
-	public List<Plaza> readPlazas() throws IOException {
-		// TODO Auto-generated method stub
+	public Map<Integer, Plaza> readPlazas() throws IOException {
 
-		List<Plaza> plazas = new ArrayList<Plaza>();
+		Map<Integer, Plaza> plazas = new TreeMap<Integer, Plaza>();
+
+		String linea;
 
 		File file = new File("src/resources/Plazas.txt");
 		FileReader reader = new FileReader(file);
 		BufferedReader buffer = new BufferedReader(reader);
-
-		String linea;
 
 		while ((linea = buffer.readLine()) != null) {
 
 			if (!linea.contains("NUMERO_PLAZA") || linea.isEmpty()) {
 
 				Plaza plazaTemp = new Plaza();
-				String numeroPlaza = linea.substring(0, linea.indexOf(";"));
-
-				plazaTemp.setNumeroPlaza(Integer.parseInt(numeroPlaza));
 
 				String[] temp = linea.split(";");
 
 				plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
+
 				plazaTemp.setPrecio(Double.parseDouble(temp[1]));
 
-				plazas.add(plazaTemp);
+				plazas.put(plazaTemp.getNumeroPlaza(), plazaTemp);
 
 			}
+
 		}
 
 		reader.close();
@@ -48,30 +46,20 @@ public class PlazaDAOFileImp implements PlazaDAO {
 		return plazas;
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		PlazaDAO dao = new PlazaDAOFileImp();
-
-		dao.readPlazas();
+	@Override
+	public void createPlaza(Plaza plaza) {
 
 	}
 
 	@Override
-	public void createPlazas(List<Plaza> plazas) {
-		// TODO Auto-generated method stub
+	public Plaza readPlaza(int numeroPlaza) throws IOException {
 
-	}
-
-	@Override
-	public Plaza readPlaza(int numeroPlaza) throws NumberFormatException, IOException {
+		String linea;
+		Plaza plazaTemp = null;
 
 		File file = new File("src/resources/Plazas.txt");
 		FileReader reader = new FileReader(file);
 		BufferedReader buffer = new BufferedReader(reader);
-
-		String linea;
-		
-		Plaza plazaTemp = null;
 
 		while ((linea = buffer.readLine()) != null) {
 
@@ -79,23 +67,23 @@ public class PlazaDAOFileImp implements PlazaDAO {
 
 				String[] temp = linea.split(";");
 
-				plazaTemp.setNumeroPlaza(Integer.valueOf(numeroPlaza));
-
 				if (numeroPlaza == Integer.valueOf(temp[0])) {
-					
+
 					plazaTemp = new Plaza();
+
 					plazaTemp.setNumeroPlaza(Integer.parseInt(temp[0]));
+
 					plazaTemp.setPrecio(Double.parseDouble(temp[1]));
-				
+
 				}
-				
+
 			}
+
 		}
 
 		reader.close();
 
 		return plazaTemp;
-
 	}
 
 	@Override

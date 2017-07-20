@@ -7,6 +7,9 @@ import com.everis.alicante.courses.beca.java_.garage.domain.Reserva;
 
 public interface ReservaDAO {
 	
-	void createReserva(Reserva reserva) throws IOException;
-	Map<String, Reserva> readReserva() throws IOException;
+	Map<String,Reserva> readReservas() throws IOException;
+	
+	void createReserva(Reserva reserva)  throws IOException;
+	
+	
 }

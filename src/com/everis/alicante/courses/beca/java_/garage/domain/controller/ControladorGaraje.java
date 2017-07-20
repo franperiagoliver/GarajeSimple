@@ -1,16 +1,18 @@
 package com.everis.alicante.courses.beca.java_.garage.domain.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
-import com.everis.alicante.courses.beca.java_.garage.domain.Reserva;
+import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
+
 
 public interface ControladorGaraje {
 	
-	void listarPlazasLibres();
-	void listarPlazasOcupadas();
+	Map<Integer, Plaza> listarPlazasLibres() throws IOException;
+	void listarPlazasOcupadas() throws IOException;
 	boolean reservarPlaza() throws IOException;
 	void listarClientes() throws IOException;
 	void listarReservas() throws IOException;
 	void listarVehiculos() throws IOException;
+
 }

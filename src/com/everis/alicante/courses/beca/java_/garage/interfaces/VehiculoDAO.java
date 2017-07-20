@@ -1,14 +1,17 @@
 package com.everis.alicante.courses.beca.java_.garage.interfaces;
-
 import java.io.IOException;
 import java.util.Map;
 
 import com.everis.alicante.courses.beca.java_.garage.domain.Vehiculo;
 
 public interface VehiculoDAO {
-
-	Map<String, Vehiculo> readVehiculo() throws IOException;
-
+	
+	Map<String,Vehiculo> readVehiculos() throws IOException;
+	
 	void createVehiculo(Vehiculo vehiculo) throws IOException;
+	
+	Vehiculo readVehiculo(String matricula) throws IOException;
+	
+	void deleteVehiculo(String matricula) throws IOException;
 
 }

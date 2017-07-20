@@ -1,20 +1,21 @@
 package com.everis.alicante.courses.beca.java_.garage.interfaces;
 
+
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 
 public interface PlazaDAO {
 	
-	List<Plaza> readPlazas() throws IOException;
+	Map<Integer, Plaza> readPlazas() throws IOException;
 	
-	void createPlazas(List<Plaza> plazas);
+	void createPlaza(Plaza plaza);
 	
-	Plaza readPlaza(int numeroPlaza) throws NumberFormatException, IOException;
+	Plaza readPlaza(int numeroPlaza) throws IOException;
 	
 	void deletePlaza(int numeroPlaza);
 	
-	// Falta el update.
-	
+	//falta el update
+
 }

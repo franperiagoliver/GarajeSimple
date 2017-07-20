@@ -1,130 +1,110 @@
 package com.everis.alicante.courses.beca.java_.garage;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.everis.alicante.courses.beca.java_.garage.domain.Garaje;
+import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 import com.everis.alicante.courses.beca.java_.garage.domain.controller.ControladorGaraje;
 import com.everis.alicante.courses.beca.java_.garage.domain.controller.ControladorGarajeImpl;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.ClienteDAO;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.PlazaDAO;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.ReservaDAO;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.VehiculoDAO;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.ClienteDAOFileImp;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.PlazaDAOFileImp;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.ReservaDAOFileImp;
-import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.VehiculoDAOFileImp;
 
 public class GarageMain {
-	
-	static Garaje garaje;
-	
-//	public static Garaje getGaraje() {
-//		return garaje;
-//	}
 
-	static ControladorGaraje controlador;
-	
-	public static void main(String[] args) throws IOException {
+		static Garaje garaje;
 		
-		// Inicializar los componentes de la aplicación.
+		static ControladorGaraje controlador;
 		
-		// 4 clientes.
 		
-		// 5 vehiculos.
+		public static void main(String[] args) throws IOException {	
 		
-		// 30 plazas de garaje.
 		
-		// 1 garaje.
+			inicializarComponentes();
 		
-		inicializarComponentes();
+		//iniciar aplicacion o listar menu
 		
-		// Iniciar aplicación (Listar menú por pantalla).
-		
-		iniciarAplicacion();
+			iniciarAplicacion();
 
 	}
 	
+	@SuppressWarnings("resource")
 	private static void iniciarAplicacion() throws IOException {
 		
-		System.out.println("***********************************************************");
-		System.out.println("***********************************************************");
-		System.out.println("Bienvenido a nuestro garaje, seleccione una opción: \n");
-		System.out.println("1: Listar Plazas Garaje libres");
-		System.out.println("2: Listar Plazas Garaje ocupadas");
-		System.out.println("3: Reservar plazas");
-		System.out.println("4: Listar clientes");
-		System.out.println("5: Listar reservas");
-		System.out.println("6: Listar vehículos");
+		System.out.println("*******************************************************");	
+		
+		System.out.println("Bienvenido a nuestro garaje, seleccione una opcion: ");
+		System.out.println("1:Listar Plazas Garaje Libre ");
+		System.out.println("2:Listar Plazas Garaje Ocupadas ");
+		System.out.println("3:Reservar Plazas");
+		System.out.println("4:Listar Clientes");
+		System.out.println("5:Listar Reservas");
+		System.out.println("6:Listar Vehiculos");
 		
 		Scanner in = new Scanner(System.in);
 		Integer opcion = in.nextInt();
-		Boolean resultado = true;
+	    boolean resultado = true;   
+	    Map<Integer,Plaza> mapa=null;
 		
-		System.out.println("Ha elegido la opción: " + opcion);
-		
+		System.out.println("Ha elegido la opcion :" + opcion);
+				
 		switch (opcion) {
-		case 1:
-			
-			controlador.listarPlazasLibres();
-			break;
-			
-		case 2:
-			
-			controlador.listarPlazasOcupadas();
-			break;
+			case 1:	
+				mapa = controlador.listarPlazasLibres();			
+				break;
+			case 2:			
+				controlador.listarPlazasOcupadas();			
+				break;
+			case 3:			
+				resultado=controlador.reservarPlaza();			
+				break;
+			case 4:			
+				controlador.listarClientes();		
+				break;
+			case 5:			
+				controlador.listarReservas();		
+				break;
+			case 6:			
+				controlador.listarVehiculos();		
+				break;
+			default:
+				System.out.println("Error");
+				break;
+			}
 		
-		case 3:
-			resultado=controlador.reservarPlaza();
-			break;
+		if(opcion==1){
 			
-		case 4:
-			controlador.listarClientes();
-			break;
-			
-		case 5:
-			controlador.listarReservas();
-			break;
-			
-		case 6:
-			controlador.listarVehiculos();
-			break;
-			
-		default:
-			break;
+			for (Iterator<Plaza> iterator = mapa.values().iterator(); iterator.hasNext();) {
+					
+				Plaza plaza = (Plaza) iterator.next();
+				
+				System.out.println("Plaza libre numero: " + plaza.getNumeroPlaza());				
+				
+			}
 		}
 		
-		if (opcion == 3 && resultado) {
-			System.out.println("Se ha reservado tu plaza");
-		}
-		else if (opcion == 3){
+		
+		if(opcion==3&&resultado){
+			System.out.println("Se ha reservado su plaza");
+		}else if (opcion==3){
 			System.out.println("No hay plazas disponibles");
 		}
-		
+			
 		iniciarAplicacion();
 		
 	}
 
-	public static void inicializarComponentes() throws IOException {
+	public static void inicializarComponentes() throws IOException{
 		
-		garaje = new Garaje();
+		garaje= new Garaje();			
 		
-//		PlazaDAO plazaDAO = new PlazaDAOFileImp();
-//		ReservaDAO reservaDAO = new ReservaDAOFileImp();
-//		ClienteDAO clienteDAO = new ClienteDAOFileImp();
-//		VehiculoDAO vehiculoDAO = new VehiculoDAOFileImp();
-//		
-//		garaje.setPlaza(plazaDAO.readPlaza());
-//		
-//		garaje.setClientes(clienteDAO.readCliente());
-//		
-//		garaje.setVehiculos(vehiculoDAO.readVehiculo());
-//		
-//		garaje.setReservas(reservaDAO.readReserva());
-		
-		controlador = new ControladorGarajeImpl();
+		controlador= new ControladorGarajeImpl();
+	
 		
 	}
+
+//	public static Garaje getGaraje() {
+//		return garaje;
+//	}
 	
 	
 }
-
