@@ -7,43 +7,41 @@ public class ValidadorNIF {
 
 	public static boolean validarNIF(String nif) {
 
-	    boolean correcto = false;
+		boolean correcto = false;
 
-	    Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
+		Pattern pattern = Pattern.compile("(\\d{1,8})([TRWAGMYFPDXBNJZSQVHLCKEtrwagmyfpdxbnjzsqvhlcke])");
 
-	    Matcher matcher = pattern.matcher(nif);
+		Matcher matcher = pattern.matcher(nif);
 
-	    if (matcher.matches()) {
+		if (matcher.matches()) {
 
-	        String letra = matcher.group(2);
+			String letra = matcher.group(2);
 
-	        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+			String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
 
-	        int index = Integer.parseInt(matcher.group(1));
+			int index = Integer.parseInt(matcher.group(1));
 
-	        index = index % 23;
+			index = index % 23;
 
-	        String reference = letras.substring(index, index + 1);
+			String reference = letras.substring(index, index + 1);
 
+			if (reference.equalsIgnoreCase(letra)) {
 
+				correcto = true;
 
-	        if (reference.equalsIgnoreCase(letra)) {
+			} else {
 
-	            correcto = true;
+				correcto = false;
 
-	        } else {
+			}
 
-	            correcto = false;
+		} else {
 
-	        }
+			correcto = false;
 
-	    } else {
+		}
 
-	        correcto = false;
-
-	    }
-
-	    return correcto;
+		return correcto;
 
 	}
 }
