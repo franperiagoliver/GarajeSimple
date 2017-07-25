@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class ValidadorNIF {
 
-	public static boolean validarNIF(String nif) {
+	private static boolean validarNIF(String nif) {
 
 		boolean correcto = false;
 
