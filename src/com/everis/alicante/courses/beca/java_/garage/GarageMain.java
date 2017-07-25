@@ -1,6 +1,5 @@
 package com.everis.alicante.courses.beca.java_.garage;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +7,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.everis.alicante.courses.beca.java_.garage.controller.ControladorExcepciones;
+import com.everis.alicante.courses.beca.java_.garage.controller.ControladorExcepcionesImpl;
 import com.everis.alicante.courses.beca.java_.garage.controller.ControladorGaraje;
 import com.everis.alicante.courses.beca.java_.garage.controller.ControladorGarajeImpl;
 import com.everis.alicante.courses.beca.java_.garage.domain.Garaje;
@@ -23,23 +24,18 @@ public class GarageMain {
 	static Date fechaInicio = null;
 	static Date fechaFin = null;
 
-	public static void main(String[] args) throws IOException, ParseException {
+	public static void main(String[] args) {
 
 		inicializarComponentes();
 
 		// iniciar aplicacion o listar menu
 
-		try {
-			iniciarAplicacion();
-		} catch (GarajeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		iniciarAplicacion();
 
 	}
 
 	@SuppressWarnings("resource")
-	public static void iniciarAplicacion() throws IOException, ParseException, GarajeException {
+	public static void iniciarAplicacion() {
 
 		System.out.println("*******************************************************");
 
@@ -110,11 +106,14 @@ public class GarageMain {
 
 		} catch (GarajeException e) {
 
-			e.getStackTrace();
+			ControladorExcepciones controladorEx = new ControladorExcepcionesImpl();
+			controladorEx.gestionaExcepcion(e);
+
 		}
+
 	}
 
-	public static void inicializarComponentes() throws IOException {
+	public static void inicializarComponentes() {
 		garaje = new Garaje();
 		controlador = new ControladorGarajeImpl();
 
