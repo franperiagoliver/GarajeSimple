@@ -89,7 +89,7 @@ public class GarageMain {
 
 				for (Iterator<Plaza> iterator = mapa.values().iterator(); iterator.hasNext();) {
 
-					Plaza plaza = (Plaza) iterator.next();
+					Plaza plaza = iterator.next();
 
 					System.out.println("Plaza libre numero: " + plaza.getNumeroPlaza());
 
