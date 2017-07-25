@@ -29,5 +29,6 @@ public class GarajeExceptionDAOImpl implements GarajeExceptionDAO {
 			throw new GarajeException(e);
 		}
 	}
+	
 
 }

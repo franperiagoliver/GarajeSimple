@@ -1,3 +1,2 @@
-
-25;class com.everis.alicante.courses.beca.java_.garage.domain.GarajeException;java.io.FileNotFoundException: src\resources\Clientes.txt (El sistema no puede encontrar el archivo especificado)
-25;class com.everis.alicante.courses.beca.java_.garage.domain.GarajeException;java.lang.ArrayIndexOutOfBoundsException: 1
+NIF;NOMBRE;MATRICULA
+48363825T;JOSE;6787 DHG
