@@ -1,5 +1,9 @@
 package com.everis.alicante.courses.beca.java_.garage.domain;
 
+import java.util.Calendar;
+
+import com.everis.alicante.courses.beca.java_.garage.interfaces.implementation.GarajeExceptionDAOImpl;
+
 public class GarajeException extends Exception {
 	/**
 	 * 
@@ -24,6 +28,20 @@ public class GarajeException extends Exception {
 
 	public Throwable getCause() {
 		return super.getCause();
+	}
+
+
+	public String adaptaAFormatoTxt() {
+		
+		String str = "";
+		str = str.concat(String.valueOf(Calendar.getInstance().get(Calendar.DATE)));
+		str = str.concat(";");
+		str = str.concat(String.valueOf(super.getClass().getSimpleName()));
+		str = str.concat(";");
+		str = str.concat(String.valueOf(getCause()));
+
+		return str;
+		
 	}
 
 }

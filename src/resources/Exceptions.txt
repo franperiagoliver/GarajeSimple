@@ -1,0 +1,6 @@
+FECHA;CLASS;CAUSE
+25;class com.everis.alicante.courses.beca.java_.garage.domain.GarajeException;java.lang.ArrayIndexOutOfBoundsException: 1
+25;com.everis.alicante.courses.beca.java_.garage.domain.GarajeException;java.lang.ArrayIndexOutOfBoundsException: 1
+25;GarajeException;java.lang.ArrayIndexOutOfBoundsException: 1
+25;GarajeException;1
+25;GarajeException;[Ljava.lang.StackTraceElement;@14ae5a5
