@@ -11,6 +11,7 @@ import java.util.Scanner;
 import com.everis.alicante.courses.beca.java_.garage.domain.Camion;
 import com.everis.alicante.courses.beca.java_.garage.domain.Cliente;
 import com.everis.alicante.courses.beca.java_.garage.domain.Coche;
+import com.everis.alicante.courses.beca.java_.garage.domain.GarajeException;
 import com.everis.alicante.courses.beca.java_.garage.domain.Motocicleta;
 import com.everis.alicante.courses.beca.java_.garage.domain.Plaza;
 import com.everis.alicante.courses.beca.java_.garage.domain.Reserva;
@@ -29,7 +30,7 @@ import com.everis.alicante.courses.beca.java_.garage.utils.ValidadorNIF;
 public class ControladorGarajeImpl implements ControladorGaraje{
 
 	@Override
-	public Map<Integer,Plaza> listarPlazasLibres() throws IOException, ParseException {
+	public Map<Integer,Plaza> listarPlazasLibres() throws IOException, ParseException, GarajeException {
 		
 		PlazaDAO plazaDao= new PlazaDAOFileImp();
 		
@@ -50,7 +51,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 	}
 
 	@Override
-	public void listarPlazasOcupadas() throws IOException, ParseException {		
+	public void listarPlazasOcupadas() throws IOException, ParseException, GarajeException {		
 				
 		ReservaDAO reservaDAO= new ReservaDAOFileImp();
 		
@@ -67,7 +68,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 	}
 	
 	@Override
-	public boolean reservarPlaza() throws IOException, ParseException {
+	public boolean reservarPlaza() throws IOException, ParseException, GarajeException {
 		
 		//logica de crear cliente
 		
@@ -162,7 +163,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 	}
 	
 	@Override
-	public void listarClientes() throws IOException {
+	public void listarClientes() throws IOException, GarajeException {
 		
 		ClienteDAO daoCliente= new ClienteDAOFileImpl();		
 		
@@ -181,7 +182,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 	}
 	
 	@Override
-	public void listarReservas() throws IOException, ParseException {
+	public void listarReservas() throws IOException, ParseException, GarajeException {
 	
 		
 		ReservaDAO reservaDao= new ReservaDAOFileImp();
@@ -201,7 +202,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 	}
 	
 	@Override
-	public void listarVehiculos() throws IOException {
+	public void listarVehiculos() throws IOException, GarajeException {
 		
 		VehiculoDAO daoVehiculo= new VehiculoDAOFileImpl();
 	
@@ -217,7 +218,7 @@ public class ControladorGarajeImpl implements ControladorGaraje{
 
 
 	@Override
-	public void listarReservasByFecha(Date fechaInicio, Date fechaFin) throws IOException, ParseException {
+	public void listarReservasByFecha(Date fechaInicio, Date fechaFin) throws IOException, ParseException, GarajeException {
 	
 		ReservaDAO reservaDAO= new ReservaDAOFileImp();
 		
