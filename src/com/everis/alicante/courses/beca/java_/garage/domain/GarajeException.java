@@ -34,7 +34,7 @@ public class GarajeException extends Exception {
 	public String adaptaAFormatoTxt() {
 		
 		String str = "";
-		str = str.concat(String.valueOf(Calendar.getInstance().get(Calendar.DATE)));
+		str = str.concat(String.valueOf(Calendar.getInstance().getTime()));
 		str = str.concat(";");
 		str = str.concat(String.valueOf(super.getClass().getSimpleName()));
 		str = str.concat(";");

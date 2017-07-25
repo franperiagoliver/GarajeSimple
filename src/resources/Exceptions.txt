@@ -6,3 +6,4 @@ FECHA;CLASS;CAUSE
 25;GarajeException;[Ljava.lang.StackTraceElement;@14ae5a5
 5;GarajeException;java.lang.NullPointerException
 5;GarajeException;java.lang.NullPointerException
+Tue Jul 25 18:43:13 CEST 2017;GarajeException;java.lang.NullPointerException
